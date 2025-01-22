@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Namo",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -15,6 +15,7 @@
     "mongoose": "^8.9.5"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9"
   }
 }
