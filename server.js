@@ -7,7 +7,7 @@ require('dotenv').config();
 app.get('/ping', (req, res) => {
     try {
         res.send('Pong!');
-    } catch (error) {
+    } catch (error) { 
         res.status(500).send('An error occurred!');
     }
 });
