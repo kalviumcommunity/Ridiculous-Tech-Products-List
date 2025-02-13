@@ -1,0 +1,196 @@
+/* Futuristic Neon Tech Look */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  color: #00ffea;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating Dots Background */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 20%, #0a0a0a 20%, #0a0a0a 80%, transparent 80%, transparent);
+  background-size: 20px 20px;
+  opacity: 0.2;
+  animation: moveDots 10s linear infinite;
+}
+
+@keyframes moveDots {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100px);
+  }
+}
+
+/* Floating Dots Animation */
+.floating-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-dots span {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #00ffea;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatDot 5s infinite ease-in-out;
+}
+
+@keyframes floatDot {
+  0% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Delay for Each Dot */
+.floating-dots span:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.floating-dots span:nth-child(2) {
+  left: 40%;
+  animation-delay: 2s;
+}
+
+.floating-dots span:nth-child(3) {
+  left: 60%;
+  animation-delay: 4s;
+}
+
+.floating-dots span:nth-child(4) {
+  left: 80%;
+  animation-delay: 6s;
+}
+
+.floating-dots span:nth-child(5) {
+  left: 10%;
+  animation-delay: 8s;
+}
+
+.floating-dots span:nth-child(6) {
+  left: 30%;
+  animation-delay: 10s;
+}
+
+.floating-dots span:nth-child(7) {
+  left: 50%;
+  animation-delay: 12s;
+}
+
+.floating-dots span:nth-child(8) {
+  left: 70%;
+  animation-delay: 14s;
+}
+
+.floating-dots span:nth-child(9) {
+  left: 90%;
+  animation-delay: 16s;
+}
+
+.floating-dots span:nth-child(10) {
+  left: 5%;
+  animation-delay: 18s;
+}
+
+.landing-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-shadow: 0px 0px 10px #00ffea;
+}
+
+.landing-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0px 0px 10px #00ffea, 0px 0px 20px #00ffea;
+  }
+  to {
+    text-shadow: 0px 0px 20px #00ffea, 0px 0px 40px #00ffea;
+  }
+}
+
+.landing-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 20px auto;
+  opacity: 0.8;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+}
+
+.icon {
+  font-size: 3rem;
+  color: #00ffea;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.explore-btn {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: #0a0a0a;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.explore-btn:hover {
+  transform: scale(1.1);
+}
