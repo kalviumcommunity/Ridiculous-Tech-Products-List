@@ -1,26 +1,35 @@
-const express = require('express');
-const app = express();
-const dataBase = require('./dataBase');
-const { default: mongoose } = require('mongoose');
 require('dotenv').config();
+const express = require('express');
+const { MongoClient } = require('mongodb');
+const routes = require('./routes');
 
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Route for /ping with basic error handling
-app.get('/', (req, res) => {
+app.use(express.json());
+
+const client = new MongoClient(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+async function startServer() {
     try {
-        res.send("Working Well");
+        await client.connect();
+        const db = client.db('testdb');
+        console.log('✅ MongoDB Connected');
+
+        app.use('/api', routes(db));
+
+        app.get('/', (req, res) => {
+            res.send('🚀 API is running...');
+        });
+
+        app.listen(PORT, () => console.log(`🚀 Server running on port http://localhost:${PORT}`));
     } catch (error) {
-        res.status(500).send('An error occurred!');
+        console.error('❌ MongoDB Connection Error:', error);
+        process.exit(1);
     }
-});
+}
 
-dataBase();
-
-
-// Use an environment variable for the port with a fallback to 8000
-const PORT = process.env.PORT || 8000;
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
-});
-
+startServer();
